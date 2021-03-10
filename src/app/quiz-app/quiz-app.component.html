@@ -1,0 +1,38 @@
+<h1>Welcome To Coding Mart Quiz</h1>
+<div *ngIf="!show">
+<div class="container" >
+  <h4>{{questions[0].question}}</h4>
+  <form>
+  <div  class="column" *ngFor="let data of questions[0].options" >
+    <input  [value]='data' type="radio" name="enums" [ngClass]="radioSelected1 == questions[0].answer ? 'crt': 'ncrt'" [(ngModel)]="radioSelected1" /><label>{{data}}</label>
+  </div>
+</form>
+</div>
+<div >
+  <h4>{{questions[1].question}}</h4>
+  <form>
+  <div *ngFor="let data of questions[1].options" >
+    <input [value]='data' type="radio" name="enums" [(ngModel)]="radioSelected2" /><label>{{data}}</label>
+  </div>
+</form>
+</div>
+<div >
+  <h4>{{questions[2].question}}</h4>
+  <form>
+  <div *ngFor="let data of questions[2].options" >
+    <input [value]='data' type="radio" name="enums" [(ngModel)]="radioSelected3" /><label>{{data}}</label>
+  </div>
+</form>
+</div>
+<button (click)='radioclick()' class="btn">Save</button>
+</div>
+<div *ngIf="show">
+  <h3>Questions answered correctly are:</h3>
+  <div *ngFor="let elm of questions; let i = index">
+    <div *ngIf="elm.answer == ansrs[i].answerd">
+    <h4>{{i+1 + " "+ elm.question}}</h4>
+    <h5 style="background-color: green;" >{{" "+ elm.answer}}</h5>
+  </div>
+  </div>
+
+</div>
